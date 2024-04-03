@@ -14,4 +14,6 @@ int main()
   double result = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
 
   printf("%.1lf\n", result);
+
+  return 0;
 }

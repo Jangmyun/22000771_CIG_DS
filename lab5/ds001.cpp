@@ -19,4 +19,6 @@ int main()
   {
     cout << "No" << endl;
   }
+
+  return 0;
 }

@@ -5,12 +5,12 @@ using namespace std;
 
 struct st_score
 {
-  int kor, eng, math;
-  int total;
-  double average;
+  int kor, eng, math; // 국영수 점수
+  int total;          // 총점
+  double average;     // 평균점수
 };
 
-string checkPass(int score)
+string checkPass(int score) // 성적을 입력받으면 pass인지 체크해서 pass또는 fail 문자열을 리턴하는 함수
 {
   if (score >= 70)
   {

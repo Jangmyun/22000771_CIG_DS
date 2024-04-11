@@ -2,103 +2,98 @@
 #include <string>
 using namespace std;
 
-#define TAB "\t"
-
-string ltrim(string str)
+string ltrim(string &str)
 {
-  string output;
-  int i = 0;
-  while (str[i] == ' ')
+  string tmp;
+  int index;
+  index = str.find_first_not_of(' ');
+  for (int i = index; i < str.length(); i++)
   {
-    i++;
+    tmp += str[i];
   }
-  for (int j = i; j < str.length(); j++)
+  str = tmp;
+
+  return tmp;
+}
+string rtrim(string &str)
+{
+  string tmp;
+  int index;
+  index = str.find_last_not_of(" ");
+  for (int i = 0; i < index; i++)
   {
-    output += str[j];
+    tmp += str[i];
   }
-  return output;
+  str = tmp;
+  return tmp;
 }
 
-string rtrim(string str)
+string removeLTab(string &str)
 {
-  string output;
-  int i = str.length();
-  while (str[i] == ' ')
+  string tmp;
+  int index;
+
+  index = str.find_first_not_of('\t');
+
+  for (int i = index; i < str.length(); i++)
   {
-    i--;
+    tmp += str[i];
   }
-  for (int j = 0; j < i; j++)
-  {
-    output += str[j];
-  }
-  return output;
+  str = tmp;
+
+  return tmp;
 }
 
-string removeTab(string str)
+string removeRTab(string &str)
 {
-  string output;
-  int firstIndex = -1;
-  int lastIndex = -1;
+  string tmp;
+  int index;
 
-  firstIndex = str.find_first_not_of(TAB);
+  index = str.find_last_not_of('\t');
 
-  if (firstIndex != -1)
+  for (int i = 0; i < index; i++)
   {
-    for (int i = firstIndex; i < str.length(); i++)
-    {
-      output += str[i];
-    }
+    tmp += str[i];
   }
-  else
-  {
-    output = str;
-  }
-  string output2 = output;
-  lastIndex = output.find_last_not_of(TAB);
-  if (lastIndex != -1)
-  {
-    for (int i = 0; i < lastIndex; i++)
-    {
-      output2 += output[i];
-    }
-  }
-  return output2;
+  str = tmp;
+
+  return tmp;
 }
 
-string removeAllSpaces(string str)
+string removeAllSpaces(string &str)
 {
-  string output = str;
-  while (output[0] == ' ' || output[0] == '\t')
+  string tmp;
+  // 문자열의 가장 첫번째 인덱스의 값이나 마지막 인덱스의 값 문자가 공백이 아닐때까지 반복
+  while (!(str[0] != ' ' && str[str.length() - 1] != ' ' && str[0] != '\t' && str[str.length() - 1] != '\t'))
   {
-    if (output[0] == ' ')
+    if (str[0] == ' ')
     {
-      output = ltrim(output);
+      ltrim(str);
     }
-    if (output[0] == '\t')
+    if (str[str.length() - 1] == ' ')
     {
-      output = removeTab(output);
+      rtrim(str);
+    }
+    if (str[0] == '\t')
+    {
+      removeLTab(str);
+    }
+    if (str[str.length() - 1] == '\t')
+    {
+      removeRTab(str);
     }
   }
-  while (output[output.length() - 1] == ' ' || output[output.length() - 1] == '\t')
-  {
-    if (output[output.length() - 1] == ' ')
-    {
-      output = rtrim(output);
-    }
-    if (output[output.length() - 1] == '\t')
-    {
-      output = removeTab(output);
-    }
-  }
-  return output;
+  return tmp;
 }
 
 int main()
 {
-  string input, output;
-  getline(cin, input, '\n');
+  string input;
 
-  output = removeAllSpaces(input);
-  cout << output << endl;
+  getline(cin, input);
+
+  removeAllSpaces(input);
+
+  cout << input << endl;
   return 0;
 }

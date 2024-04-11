@@ -51,7 +51,7 @@ string removeRTab(string &str)
 
   index = str.find_last_not_of('\t');
 
-  for (int i = 0; i < index; i++)
+  for (int i = 0; i < index + 1; i++)
   {
     tmp += str[i];
   }
@@ -94,6 +94,6 @@ int main()
 
   removeAllSpaces(input);
 
-  cout << input << endl;
+  cout << input << '$' << endl;
   return 0;
 }

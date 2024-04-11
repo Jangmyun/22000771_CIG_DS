@@ -14,28 +14,9 @@ struct Cafe
   Menu *list;
 };
 
-void addCafe(Cafe &c)
-{
-  getline(cin, c.name);
-  cin >> c.msize;
-  c.list = new Menu[c.msize];
-}
-
-void displayMenus(Cafe &c)
-{
-  cout << "===== " << c.name << " =====" << endl;
-  for (int i = 0; i < c.msize; i++)
-  {
-    cout << c.list[i].name << " " << c.list[i].price << endl;
-  }
-  cout << "=============" << endl;
-}
-
-void addMenu(Menu &m)
-{
-  cin >> m.name >> m.price;
-  return;
-}
+void addCafe(Cafe &c);
+void displayMenus(Cafe &c);
+void addMenu(Menu &m);
 
 int main()
 {
@@ -51,4 +32,27 @@ int main()
 
   delete[] c.list;
   return 0;
+}
+
+void addCafe(Cafe &c) // Cafe 추가하는 함수
+{
+  getline(cin, c.name);       // 카페이름 입력받기
+  cin >> c.msize;             // 메뉴 사이즈 입력받기
+  c.list = new Menu[c.msize]; // 카페 메뉴리스트에 메모리 사이즈만큼 할당
+}
+
+void displayMenus(Cafe &c) // 메뉴 출력함수
+{
+  cout << "===== " << c.name << " =====" << endl;
+  for (int i = 0; i < c.msize; i++)
+  {
+    cout << c.list[i].name << " " << c.list[i].price << endl;
+  }
+  cout << "=================" << endl;
+}
+
+void addMenu(Menu &m) // 메뉴 추가 함수
+{
+  cin >> m.name >> m.price; // 메뉴이름과 가격 입력받기
+  return;
 }

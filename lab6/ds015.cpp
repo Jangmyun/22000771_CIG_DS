@@ -2,6 +2,27 @@
 #include <string>
 using namespace std;
 
+string ltrim(string &str);
+string rtrim(string &str);
+string removeLTab(string &str);
+string removeRTab(string &str);
+string removeAllSpaces(string &str);
+int findLastWordLength(string str);
+
+int main()
+{
+  string input;
+
+  getline(cin, input);
+  removeAllSpaces(input);
+
+  // cout << input << endl;
+
+  int wordLength = findLastWordLength(input);
+  cout << wordLength << endl;
+  return 0;
+}
+
 string ltrim(string &str)
 {
   string tmp;
@@ -95,18 +116,4 @@ int findLastWordLength(string str)
   wordLength = str.length() - 1 - spaceIndex;
 
   return wordLength;
-}
-
-int main()
-{
-  string input;
-
-  getline(cin, input);
-  removeAllSpaces(input);
-
-  // cout << input << endl;
-
-  int wordLength = findLastWordLength(input);
-  cout << wordLength << endl;
-  return 0;
 }

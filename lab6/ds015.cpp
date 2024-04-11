@@ -104,7 +104,7 @@ int main()
   getline(cin, input);
   removeAllSpaces(input);
 
-  cout << input << endl;
+  // cout << input << endl;
 
   int wordLength = findLastWordLength(input);
   cout << wordLength << endl;

@@ -15,7 +15,7 @@ class Product {  // 상품 한개 정보 다루는 클래스
     cin >> this->price >> this->discount >> this->weight >> this->cName;
   }
   // 상품 할인률 계산한 실제 가격 리턴하는 함수
-  int getActualPrice() { return price - price / 100 * discount; }
+  int getActualPrice() { return price - (int)(price / 100.0 * discount); }
   void printProduct() {  // 상품정보 출력하는 함수
     cout << getActualPrice() << " (-" << discount << "%) " << pName << " "
          << weight << " " << cName << endl;

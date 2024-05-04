@@ -8,4 +8,4 @@
 
 ### ds033 결과
 
-![](./result/ds033s.png)
+![](./result/ds033.png)

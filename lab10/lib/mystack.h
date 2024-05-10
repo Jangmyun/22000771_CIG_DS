@@ -16,13 +16,14 @@ class MyLinkedStack {
   Node* stacktop;
 
  public:
-  void initialize();
-  bool isEmpty() const;
-  void push(const Node& n);
-  void pop();
-  Node peek() const;
-  int getNodeCnt() const;
   MyLinkedStack();
   ~MyLinkedStack();
+  void initialize();
+  bool isEmpty() const;
+  // bool isFull() const;
+  void push(const int& n);
+  void pop();
+  int peek() const;
+  int getNodeCnt() const;
   void printAll();
 };

@@ -20,8 +20,8 @@ bool MyLinkedStack::isEmpty() const {
   return false;
 }
 
-void MyLinkedStack::push(const Node& n) {
-  Node* newNode = new Node(n.data);
+void MyLinkedStack::push(const int& n) {
+  Node* newNode = new Node(n);
   if (isEmpty()) {
     stacktop = newNode;
     return;
@@ -37,7 +37,7 @@ void MyLinkedStack::pop() {
   delete t;
 }
 
-Node MyLinkedStack::peek() const { return *stacktop; }
+int MyLinkedStack::peek() const { return stacktop->data; }
 
 int MyLinkedStack::getNodeCnt() const {
   Node* i;
@@ -59,4 +59,5 @@ void MyLinkedStack::printAll() {
       cout << i->data << " -> ";
     }
   }
+  cout << endl;
 }

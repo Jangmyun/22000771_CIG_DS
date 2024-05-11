@@ -1,3 +1,4 @@
+# make ds문제번호로 컴파일
 ds041: ds041.cpp lib/mystack.o
 	g++ -o ds041 ds041.cpp ./lib/mystack.o -I./lib
 

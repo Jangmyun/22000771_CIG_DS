@@ -59,5 +59,5 @@ void MyLinkedStack::printAll() {
       cout << i->data << " -> ";
     }
   }
-  cout << endl;
+  cout << "(" << getNodeCnt() << " nodes)" << endl;
 }

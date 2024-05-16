@@ -3,6 +3,7 @@ using namespace std;
 
 template <typename T>
 class MyCircularQueue {
+ private:
   int maxsize;
   int front;
   int rear;
@@ -18,7 +19,7 @@ class MyCircularQueue {
   T Rear();
   MyCircularQueue(int size = 10);
   ~MyCircularQueue();
-  void print();
+  void print() const;
   int size() const;
   void printDetail() const;
 };
@@ -66,6 +67,7 @@ void MyCircularQueue<T>::enqueue(const T& elem) {
     rear = (rear + 1) % maxsize;
     return;
   }
+  cout << "Queue is Full !" << endl;
 }
 
 template <typename T>
@@ -74,6 +76,7 @@ void MyCircularQueue<T>::dequeue() {
     front = (front + 1) % maxsize;
     return;
   }
+  cout << "Queue is empty ! " << endl;
 }
 
 template <typename T>
@@ -98,10 +101,51 @@ int MyCircularQueue<T>::size() const {
 }
 
 template <typename T>
-void MyCircularQueue<T>::print() {}
+void MyCircularQueue<T>::print() const {
+  int tmp = front;
+  while (tmp != rear) {
+    cout << "[" << list[tmp] << "]";
+    tmp = (tmp + 1) % maxsize;
+  }
+  cout << endl;
+}
+
+template <typename T>
+void MyCircularQueue<T>::printDetail() const {
+  cout << "Size : " << size() << endl;
+  cout << "Queue :";
+  print();
+  cout << "index : ";
+  for (int i = front; i != rear; i = (i + 1) % maxsize) {
+    cout << i + 1 << " ";
+  }
+  cout << endl;
+  cout << "front : " << front << ", rear : " << rear << endl;
+}
 
 int main() {
   MyCircularQueue<int> q;
+  cout << "===== Dequeue x 1 =====" << endl;
+  q.dequeue();
+  q.printDetail();
+
+  cout << "===== Enqueue x 7 (10 ~ 70) =====" << endl;
+  for (int i = 10; i <= 70; i += 10) {
+    q.enqueue(i);
+  }
+  q.printDetail();
+
+  cout << "===== Dequeue x 3 =====" << endl;
+  for (int i = 0; i < 3; i++) {
+    q.dequeue();
+  }
+  q.printDetail();
+
+  cout << "===== Enqueue x 6 (10 ~ 60) =====" << endl;
+  for (int i = 10; i <= 60; i += 10) {
+    q.enqueue(i);
+  }
+  q.printDetail();
 
   return 0;
 }

@@ -9,3 +9,6 @@ ds053: ds053.cpp lib/myqueue.o
 
 myqueue.o: lib/myqueue.cpp lib/myqueue.h
 	g++ -c ./lib/myqueue.cpp
+
+rm: ds051 ds052 ds053
+	rm ds051 ds052 ds053

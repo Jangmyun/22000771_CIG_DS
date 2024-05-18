@@ -16,28 +16,28 @@ void MyCircularQueue<T>::print() const {
 int main() {
   int q_size;
   cin >> q_size;
-  MyCircularQueue<int> q(q_size);  // int 저장하
+  MyCircularQueue<int> q(q_size);  // int 타입을 다루는 Queue 생성
   string input;
   while (input != "q") {  // q 입력받을 때까지 계속 반복
     cin >> input;
     int data;
-    if (input == "en") {
+    if (input == "en") {  // 키워드 en이면 그 다음 나오는 숫자를 en q
       cin >> data;
       q.enqueue(data);
-    } else if (input == "de") {
+    } else if (input == "de") {  // de 면 de q
       q.dequeue();
-    } else if (input == "front") {
+    } else if (input == "front") {  // front면 front값 출력, q 비었으면 -1 출력
       data = q.isEmpty() ? -1 : q.Front();
       cout << "=> " << data << endl;
-    } else if (input == "rear") {
+    } else if (input == "rear") {  // rear면 rear값 출력, q 비었으면 -1 출력
       data = q.isEmpty() ? -1 : q.Rear();
       cout << "=> " << data << endl;
-    } else if (input == "size") {
+    } else if (input == "size") {  // size 출력
       cout << "=> " << q.size() << endl;
-    } else if (input == "empty") {
+    } else if (input == "empty") {  // 비었으면 1 값 있으면 0 출력
       int a = q.isEmpty() ? 1 : 0;
       cout << "=> " << a << endl;
-    } else if (input == "print") {
+    } else if (input == "print") {  // print
       q.print();
     }
   }

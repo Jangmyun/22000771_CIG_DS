@@ -1,30 +1,31 @@
 #include <iostream>
 using namespace std;
-#include "./lib/linkedlistQ.h"
+#include "./lib/linkedlistq.h"
 
 int main() {
+  LinkedListQ q;
   int choice, flag = 1, value;
   while (flag == 1) {
     cout << "\n1.enqueue 2.dequeue 3.showfront 4.showrear 5.displayQueue "
-            "6.exit\n";
+            "6.exit > ";
     cin >> choice;
     switch (choice) {
       case 1:
-        cout << "Enter Value:\n";
+        cout << "Enter Value:";
         cin >> value;
-        enqueue(value);
+        q.enqueue(value);
         break;
       case 2:
-        dequeue();
+        q.dequeue();
         break;
       case 3:
-        showfront();
+        q.showfront();
         break;
       case 4:
-        showrear();
+        q.showrear();
         break;
       case 5:
-        displayQueue();
+        q.printAll();
         break;
       case 6:
         flag = 0;

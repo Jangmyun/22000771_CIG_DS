@@ -24,5 +24,7 @@ class LinkedListQ {
   void dequeue();
   int Rear() const;
   int Front() const;
+  void showfront() const;
+  void showrear() const;
   void printAll() const;
 };

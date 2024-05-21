@@ -1,4 +1,4 @@
-#include "./linkedlistQ.h"
+#include "./linkedlistq.h"
 
 LinkedListQ::LinkedListQ() {
   this->front = NULL;
@@ -7,6 +7,9 @@ LinkedListQ::LinkedListQ() {
 
 void LinkedListQ::initialize() {
   Node* tmp = front;
+  if(isEmpty()){
+    return;
+  }
   for (Node* i = front->link; i != NULL; i = i->link) {
     delete tmp;
     tmp = i;
@@ -30,7 +33,10 @@ void LinkedListQ::enqueue(const int& data) {
   if (isEmpty()) {
     front = n;
     rear = n;
+    return;
   }
+  rear->link = n;
+  rear = n;
 }
 
 void LinkedListQ::dequeue() {
@@ -46,6 +52,22 @@ void LinkedListQ::dequeue() {
   tmp = front;
   front = front->link;
   delete tmp;
+}
+
+void LinkedListQ::showfront() const {
+  if (isEmpty()) {
+    cout << "Queue is empty" << endl;
+  } else {
+    cout << "element at front is:" << front->data;
+  }
+}
+
+void LinkedListQ::showrear() const {
+  if (isEmpty()) {
+    cout << "Queue is empty" << endl;
+  } else {
+    cout << "element at rear is:" << rear->data;
+  }
 }
 
 void LinkedListQ::printAll() const {

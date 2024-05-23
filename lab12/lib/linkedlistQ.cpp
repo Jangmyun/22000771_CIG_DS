@@ -7,7 +7,7 @@ LinkedListQ::LinkedListQ() {
 
 void LinkedListQ::initialize() {
   Node* tmp = front;
-  if(isEmpty()){
+  if (isEmpty()) {
     return;
   }
   for (Node* i = front->link; i != NULL; i = i->link) {
@@ -58,7 +58,7 @@ void LinkedListQ::showfront() const {
   if (isEmpty()) {
     cout << "Queue is empty" << endl;
   } else {
-    cout << "element at front is:" << front->data;
+    cout << "element at front is:" << front->data << endl;
   }
 }
 
@@ -66,7 +66,7 @@ void LinkedListQ::showrear() const {
   if (isEmpty()) {
     cout << "Queue is empty" << endl;
   } else {
-    cout << "element at rear is:" << rear->data;
+    cout << "element at rear is:" << rear->data << endl;
   }
 }
 

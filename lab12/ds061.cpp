@@ -26,6 +26,7 @@ int main() {
         break;
       case 5:
         q.printAll();
+        cout << endl;
         break;
       case 6:
         flag = 0;

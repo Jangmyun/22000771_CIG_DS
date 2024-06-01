@@ -8,6 +8,11 @@ int main() {
     cout << "1. selection 2.insertion 3.bubble 4.quick 5.merge 6.exit > ";
     cin >> select;
 
+    if (select == 6) {
+      cout << "bye!" << endl;
+      return 0;
+    }
+
     int n;
     cout << "Enter count: ";
     cin >> n;
@@ -37,8 +42,6 @@ int main() {
       case 5:
         mergeSort(arr, n);
         print(arr, n);
-      case 6:
-        cout << "bye!" << endl;
       default:
         break;
     }

@@ -12,5 +12,6 @@ int main() {
   }
 
   insertionSort(arr, n);
+  print(arr, n);
   return 0;
 }

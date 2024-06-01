@@ -41,7 +41,7 @@ void insertionSort(int *arr, int n) {
 }
 
 void bubbleSortAscending(int *arr, int n) {
-  for (int i = 0; i < n; i++) {
+  for (int i = 0; i < n - 1; i++) {
 #ifdef _DEBUG
     print(arr, n);
 #endif

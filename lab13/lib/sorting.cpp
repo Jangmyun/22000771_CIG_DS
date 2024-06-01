@@ -97,50 +97,51 @@ void quickSort(int *arr, int n) {
 #endif
 }
 
-// void merge(int *arr1, int *arr2, int n1, int n2, int n3, int n4) {
-//   int i, j, k, t;
-//   i = n1;
-//   j = n3;
-//   k = n1;
-//   while ((i <= n2) && (j <= n4)) {
-//     if (arr1[i] <= arr1[j]) {
-//       arr2[k++] = arr1[j++];
-//     } else {
-//       arr2[k++] = a[j++];
-//     }
-//     if (i > n2) {
-//       for (t = j; t <= n4; t++) {
-//         arr2[t] = arr1[t];
-//       }
-//     } else {
-//       for (t = i; t <= n2; t++) {
-//         arr2[k + t - i] = arr1[t];
-//       }
-//     }
-//   }
-// }
-// void merge_pass(int *arr1, int *arr2, int n, int s) {
-//   int i, j;
-//   for (i = 0; i < (n - 2 * s + 1); i += 2 * s) {
-//     merge(arr1, arr2, i, i + s - 1, i + s, i + 2 * s - 1);
-//   }
-//   if (i + s <= n) {
-//     merge(arr1, arr2, i + s - 1, i + s, n);
-//   } else {
-//     for (j = i; j <= n; j++) {
-//       arr2[j] = arr1[j];
-//     }
-//   }
-// }
+void merge1(int *arr1, int *arr2, int n1, int n2, int n3, int n4) {
+  int i, j, k, t;
+  i = n1;
+  j = n3;
+  k = n1;
+  while ((i <= n2) && (j <= n4)) {
+    if (arr1[i] <= arr1[j]) {
+      arr2[k++] = arr1[j++];
+    } else {
+      arr2[k++] = arr1[j++];
+    }
+    if (i > n2) {
+      for (t = j; t <= n4; t++) {
+        arr2[t] = arr1[t];
+      }
+    } else {
+      for (t = i; t <= n2; t++) {
+        arr2[k + t - i] = arr1[t];
+      }
+    }
+  }
+}
+void merge_pass(int *arr1, int *arr2, int n, int s) {
+  int i, j;
+  for (i = 0; i < (n - 2 * s + 1); i += 2 * s) {
+    merge1(arr1, arr2, i, i + s - 1, i + s, i + 2 * s - 1);
+  }
+  if (i + s <= n) {
+    merge1(arr1, arr2, i, i + s - 1, i + s, n);
+  } else {
+    for (j = i; j <= n; j++) {
+      arr2[j] = arr1[j];
+    }
+  }
+}
 
-// void mergeSort(int *arr, int n) {
-//   int s = 1;
-//   int arr2[n];
+void mergeSort(int *arr, int n) {
+  int s = 1;
+  int arr2[n];
 
-//   while (s < n) {
-//     merge_pass(arr, arr2, n - 1, s);
-//     s *= 2;
-//     merge_pass(arr, arr2, n - 1, s);
-//     s *= 2;
-//   }
-// }
+  while (s < n) {
+    merge_pass(arr, arr2, n - 1, s);
+    s *= 2;
+    merge_pass(arr, arr2, n - 1, s);
+    s *= 2;
+    print(arr, n);
+  }
+}

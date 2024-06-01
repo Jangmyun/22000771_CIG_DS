@@ -5,9 +5,10 @@ exe2 = ds072
 exe3 = ds073
 exe4 = ds074
 exe5 = ds075
+exe6 = ds076
 debug = -D_DEBUG
 
-all: $(exe1) $(exe2) $(exe3) $(exe4) $(exe5)
+all: $(exe1) $(exe2) $(exe3) $(exe4) $(exe5) $(exe6)
 
 $(exe1): $(exe1).cpp $(lib)
 	g++ -o $(exe1) $(exe1).cpp $(lib) -I./lib $(debug)
@@ -23,6 +24,9 @@ $(exe4): $(exe4).cpp $(lib)
 
 $(exe5): $(exe5).cpp $(lib)
 	g++ -o $(exe5) $(exe5).cpp $(lib) -I./lib $(debug)
+
+$(exe6): $(exe6).cpp $(lib)
+	g++ -o $(exe6) $(exe6).cpp $(lib) -I./lib $(debug)
 
 lib/sorting.o: lib/sorting.cpp lib/sorting.h
 	g++ -c lib/sorting.cpp -o lib/sorting.o $(debug) -I./lib

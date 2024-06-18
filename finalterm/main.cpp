@@ -20,8 +20,8 @@ int main() {
   CardManager manager;
 
   while (!quit) {
-    cout
-        << "[Menu] 1.View 2.Add 3.Change 4.Sort 5.Search 6.Load 7.All 0.Quit\n";
+    cout << "[Menu] 1.View 2.Add 3.Change 4.Sort 5.Search 6.Load 7.All 8.Save "
+            "0.Quit\n";
     cout << ">> Menu? > ";
     cin >> no;
     switch (no) {
@@ -55,6 +55,9 @@ int main() {
       case 7:
         cout << ">>7.All Classes\n";
         printAllClasses();
+        break;
+      case 8:
+        manager.saveCard();
         break;
       case 0:
         quit = 1;

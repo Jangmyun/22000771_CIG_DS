@@ -1,5 +1,6 @@
 #include "cardManager.h"
 
+#include <ctime>
 #include <fstream>
 #include <iostream>
 #include <map>
@@ -20,13 +21,20 @@ void CardManager::printAll() {
   int i;
   double total = 0;
   int credit = 0;
-  double GPA = 0.0;
+  double GPA;
   double gs;  // grade score
 
   for (i = 0; i < myclasses.size(); i++) {
-    gs = gradescore.find(myclasses[i]->getCredit());
+    gs = gradescore[myclasses[i]->getGrade()];
+    credit += myclasses[i]->getCredit();
+    total += gs * (myclasses[i]->getCredit());
+
     cout << i + 1 << " | " << myclasses[i]->toString() << endl;
   }
+  GPA = total / (double)credit;
+  cout.precision(3);
+  cout << "Total " << i + 1 << " classes, " << credit << " credit, GPA " << GPA
+       << endl;
 }
 
 void CardManager::addCard() {
@@ -102,4 +110,32 @@ void CardManager::findCards(string name) {
     }
   }
   cout << count << " classes found.\n";
+}
+
+void CardManager::saveCard() {
+  ofstream mycard("mycard.txt");
+  ofstream reportFile("./report.txt");
+
+  time_t timer = time(NULL);
+  struct tm* t;
+  t = localtime(&timer);
+
+  int i = 1;
+  if (!reportFile || !mycard) {
+    cout << "Can't open the file." << endl;
+    return;
+  }
+
+  for (vector<Card*>::size_type i = 0; i < myclasses.size(); i++) {
+    mycard << myclasses[i]->getCode() << " " << myclasses[i]->getGrade()
+           << endl;
+
+    reportFile << i + 1 << " | " << myclasses[i]->toString() << endl;
+  }
+  reportFile << t->tm_mon << "/" << t->tm_mday << "   " << t->tm_hour << "시"
+             << t->tm_min << "분" << endl;
+  cout << "mycard.txt and report.txt saved." << endl;
+
+  mycard.close();
+  reportFile.close();
 }

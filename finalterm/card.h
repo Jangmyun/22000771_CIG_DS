@@ -21,6 +21,7 @@ class Card {
   string getCode() { return code; };
   string getName() { return name; };
   int getCredit() { return credit; };
+  string getGrade() { return grade; }
   string toString();
   string toStringShort();
 
